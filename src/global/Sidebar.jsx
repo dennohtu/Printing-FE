@@ -238,8 +238,8 @@ const MySidebar = () => {
             </Typography>
 
             <Item
-              title="Marketplace Payments"
-              to="/payments/marketplace"
+              title="Payments"
+              to="/payments"
               icon={<LocalGroceryStoreIcon />}
               selected={selected}
               setSelected={setSelected}

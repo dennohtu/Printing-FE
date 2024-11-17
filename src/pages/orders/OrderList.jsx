@@ -35,40 +35,21 @@ const OrderList = () => {
       },
     },
     {
-      field: "Products",
-      headerName: "Order Items",
+      field: "Product",
+      headerName: "Product",
       minWidth: 150,
       renderCell: ({ row }) => {
-        return (
-          <ul style={{ listStyle: "none" }}>
-            {row.Products.map((p, idx) => {
-              return (
-                <li
-                  key={idx}
-                >{`${p.quantity}  ${p.Product_ID.Product_Name}`}</li>
-              );
-            })}
-          </ul>
-        );
+        return row.Product?.Product_Name;
       },
       flex: 2,
     },
     {
-      field: "Total_Cost",
-      headerName: "Total Cost",
+      field: "Client",
+      headerName: "Client",
       minWidth: 150,
       renderCell: ({ row }) => {
-        return `Kshs ${(Math.round(row.Total_Cost * 100) / 100).toFixed(2)}`;
-      },
-      flex: 1,
-    },
-    {
-      field: "User_ID",
-      headerName: "Buyer",
-      minWidth: 150,
-      renderCell: ({ row }) => {
-        if (row.User_ID)
-          return row.User_ID.User_First_Name + " " + row.User_ID.User_Last_Name;
+        if (row.Client)
+          return row.Client.User_First_Name + " " + row.Client.User_Last_Name;
         else return " ";
       },
     },
@@ -82,7 +63,7 @@ const OrderList = () => {
       flex: 1,
     },
     {
-      field: "status",
+      field: "Status",
       headerName: "Status",
       flex: 1,
       minWidth: 150,

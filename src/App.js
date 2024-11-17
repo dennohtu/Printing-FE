@@ -3,12 +3,6 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import Topbar from "./global/Topbar";
 import Login from "./pages/auth/Login";
 import Otp from "./pages/auth/OTP";
-// import Sidebar from "./global/Sidebar";
-// import Users from "./pages/Users"
-// import Farms from "./pages/Farms"
-// import Insitutions from "./pages/Institutions"
-// import Marketplace from "./pages/Marketplace"
-// import Payments from "./pages/Payments"
 import Dashboard from "./pages/dashboard";
 import { Route, Routes } from "react-router-dom";
 import MySidebar from "./global/Sidebar";
@@ -54,7 +48,6 @@ import DisbursementItem from "./pages/disbursements/DisbursementItem";
 import DisbursementList from "./pages/disbursements/DisbursementList";
 import FarmerDisbursementList from "./pages/disbursements/FarmerDIsbursementList";
 import UserWallet from "./pages/UserWallet";
-import FarmSales from "./pages/sales/FarmSales";
 import MarketplaceSales from "./pages/sales/MarketplaceSales";
 import EmployeeForm from "./pages/employee/EmployeeForm";
 import Employees from "./pages/employee/Employees";
@@ -66,6 +59,8 @@ import WriteupList from "./pages/writeups/WriteupList";
 import WriteupForm from "./pages/writeups/WriteupForm";
 import PestDiseaseList from "./pages/pestsdiseases/PestDiseaseList";
 import PestDiseaseForm from "./pages/pestsdiseases/PestDiseaseForm";
+import Payments from "./pages/sales/MarketplaceSales";
+import PaymentForm from "./pages/sales/PaymentForm";
 
 function App() {
   const { user } = useSelector((state) => state.user);
@@ -173,17 +168,8 @@ function App() {
                   element={<FarmerDisbursementList />}
                 />
                 <Route path="/wallet" element={<UserWallet />} />
-                <Route path="/payments">
-                  <Route path="/payments/farm" element={<FarmSales />} />
-                  <Route
-                    path="/payments/farmsubscriptions"
-                    element={<FarmSubscriptionList />}
-                  />
-                  <Route
-                    path="/payments/marketplace"
-                    element={<MarketplaceSales />}
-                  />
-                </Route>
+                <Route path="/payments" element={<Payments />} />
+                <Route path="/paymentsEdit" element={<PaymentForm />} />
                 <Route path="/employees">
                   <Route path="/employees/view" element={<Employees />} />
                   <Route path="/employees/add" element={<EmployeeForm />} />

@@ -25,11 +25,8 @@ const PendingFulfillmentList = () => {
 
   const cols = [
     {
-      field: "_id",
+      field: "Order_ID",
       headerName: "ID",
-      renderCell: (index) => {
-        return index.api.getRowIndex(index.row._id) + 1;
-      },
     },
     {
       field: "updatedAt",
@@ -41,39 +38,22 @@ const PendingFulfillmentList = () => {
       },
     },
     {
-      field: "Products",
-      headerName: "Products",
+      field: "Product",
+      headerName: "Product",
       flex: 1,
       minWidth: 250,
       renderCell: ({ row }) => {
-        return (
-          <ul>
-            {row.Products.map((order, idx) => {
-              return (
-                <li>{`${order.quantity} ${order.Product_ID.Product_Name}`}</li>
-              );
-            })}
-          </ul>
-        );
+        return row.Product?.Product_Name;
       },
     },
     {
-      field: "User_ID",
-      headerName: "Customer",
+      field: "Client",
+      headerName: "Client",
       minWidth: 150,
       renderCell: ({ row }) => {
-        if (row.User_ID) {
-          return `${row.User_ID.User_First_Name} ${row.User_ID.User_Last_Name}`;
+        if (row.Client) {
+          return `${row.Client.User_First_Name} ${row.Client.User_Last_Name}`;
         } else return "";
-      },
-    },
-    {
-      field: "Total_Cost",
-      headerName: "Total Cost",
-      flex: 1,
-      minWidth: 150,
-      renderCell: ({ row }) => {
-        return `Kshs ${row.Total_Cost.toFixed(2)}`;
       },
     },
     {
