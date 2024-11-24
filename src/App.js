@@ -15,15 +15,11 @@ import { loadState } from "./utils/LocalStorage";
 import { login, logout } from "./stores/UserSlice";
 import UserList from "./pages/users/Userlist";
 import InstitutionList from "./pages/Institutions/InstitutionList";
-import FarmsList from "./pages/farms/FarmList";
 import RoleList from "./pages/roles/RoleList";
-import UserForm from "./pages/users/UserForm";
-import FarmForm from "./pages/farms/FarmForm";
 import InstitutionForm from "./pages/Institutions/InstitutionForm";
 import RoleForm from "./pages/roles/RoleForm";
 import EmployeeList from "./pages/employees/EmployeeList";
 import UserItem from "./pages/users/UserItem";
-import FarmItem from "./pages/farms/FarmItem";
 import AnimalList from "./pages/data/AnimalList";
 import axios from "axios";
 import { Environment } from "./Environment";
@@ -123,15 +119,11 @@ function App() {
                 <Route path="/products" element={<ProductList />} />
                 <Route path="products/add" element={<ProductForm />} />
                 <Route path="/institutions" element={<InstitutionList />} />
-                <Route path="/farms" element={<FarmsList />} />
                 <Route path="/roles" element={<RoleList />} />
-                <Route path="/users/add" element={<UserForm />} />
-                <Route path="farms/add" element={<FarmForm />} />
                 <Route path="/institutions/add" element={<InstitutionForm />} />
                 <Route path="/roles/add" element={<RoleForm />} />
                 <Route path="/members" element={<EmployeeList />} />
                 <Route path="/users/view" element={<UserItem />} />
-                <Route path="/farms/view" element={<FarmItem />} />
                 <Route path="animals/view" element={<AnimalList />} />
                 <Route path="crops/view" element={<CropList />} />
                 <Route path="/orders/view" element={<OrderList />} />

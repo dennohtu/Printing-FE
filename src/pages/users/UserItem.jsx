@@ -10,7 +10,6 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import Badge from "../../components/Badge";
-import { ImageGroup, Image } from "react-fullscreen-image";
 import { tokens } from "../../Theme";
 import {
   ButtonLoadingPlaceholder,
@@ -62,12 +61,9 @@ const UserItem = () => {
 
   const verifyUser = (type) => {
     setVerify(true);
-    if(type === 'verify')
-      verify.mutate({ User_Verified: true });
-    else if(type === 'thorium')
-      verify.mutate({User_Thorium_Farmer: true});
-    else if(type === 'organic')
-      verify.mutate({User_Organic_Farmer: true});
+    if (type === "verify") verify.mutate({ User_Verified: true });
+    else if (type === "thorium") verify.mutate({ User_Thorium_Farmer: true });
+    else if (type === "organic") verify.mutate({ User_Organic_Farmer: true });
   };
 
   const verify = useMutation((data) => {
@@ -128,9 +124,18 @@ const UserItem = () => {
             flexDirection={isDesktop ? undefined : "column"}
           >
             <img
-              src={userEdit.User_Passport_Photo ? userEdit.User_Passport_Photo : "/assets/images/placeholder.jpg"}
+              src={
+                userEdit.User_Passport_Photo
+                  ? userEdit.User_Passport_Photo
+                  : "/assets/images/placeholder.jpg"
+              }
               alt="profilePhoto"
-              style={{ borderRadius: "50%", width: "200px", height: "200px", objectFit: userEdit.User_Passport_Photo ? undefined : 'contain' }}
+              style={{
+                borderRadius: "50%",
+                width: "200px",
+                height: "200px",
+                objectFit: userEdit.User_Passport_Photo ? undefined : "contain",
+              }}
             />
             <Box display="flex" flexDirection={"column"}>
               <Typography
@@ -179,10 +184,18 @@ const UserItem = () => {
             justifyContent={"space-evenly"}
             alignItems="center"
           >
-            {userEdit.User_Thorium_Farmer && <Badge thoriumFarmer={userEdit.User_Thorium_Farmer} />}
-            {userEdit.User_Verified && <Badge userVerified={userEdit.User_Verified} />}
-            {userEdit.User_Organic_Farmer && <Badge organicFarmer={userEdit.User_Organic_Farmer} />}
-            {!userEdit.User_Organic_Farmer && !userEdit.User_Thorium_Farmer && !userEdit.User_Verified && <Badge />}
+            {userEdit.User_Thorium_Farmer && (
+              <Badge thoriumFarmer={userEdit.User_Thorium_Farmer} />
+            )}
+            {userEdit.User_Verified && (
+              <Badge userVerified={userEdit.User_Verified} />
+            )}
+            {userEdit.User_Organic_Farmer && (
+              <Badge organicFarmer={userEdit.User_Organic_Farmer} />
+            )}
+            {!userEdit.User_Organic_Farmer &&
+              !userEdit.User_Thorium_Farmer &&
+              !userEdit.User_Verified && <Badge />}
           </Box>
           {user && user.role === "admin" && !user.employee?.ReadOnly && (
             <Box
@@ -199,96 +212,6 @@ const UserItem = () => {
               >
                 User Documents
               </Typography>
-              <Box width={"100%"}>
-                <ImageGroup>
-                  <ul style={ulStyle}>
-                    <li key={1} style={liStyle}>
-                      <Image
-                        src={
-                          userEdit.User_Id_Card_Front !== ""
-                            ? userEdit.User_Id_Card_Front
-                            : "/assets/images/placeholder.jpg"
-                        }
-                        alt="idFront"
-                        style={{
-                          position: "absolute",
-                          top: "10%",
-                          left: "10%",
-                          right: 0,
-                          bottom: 0,
-                          height: "80%",
-                          width: "80%",
-                          objectFit: "contain",
-                        }}
-                      />
-                      <text>Front Facing ID Card</text>
-                    </li>
-                    <li key={2} style={liStyle}>
-                      <Image
-                        src={
-                          userEdit.User_Id_Card_Back !== ""
-                            ? userEdit.User_Id_Card_Back
-                            : "/assets/images/placeholder.jpg"
-                        }
-                        alt="idBack"
-                        style={{
-                          position: "absolute",
-                          top: "10%",
-                          left: "10%",
-                          right: 0,
-                          bottom: 0,
-                          height: "80%",
-                          width: "80%",
-                          objectFit: "contain",
-                        }}
-                      />
-                      <text>Back Facing ID Card</text>
-                    </li>
-                    <li key={3} style={liStyle}>
-                      <Image
-                        src={
-                          userEdit.User_Passport_Photo !== ""
-                            ? userEdit.User_Passport_Photo
-                            : "/assets/images/placeholder.jpg"
-                        }
-                        alt="Passport"
-                        style={{
-                          position: "absolute",
-                          top: "10%",
-                          left: "10%",
-                          right: 0,
-                          bottom: 0,
-                          height: "80%",
-                          width: "80%",
-                          objectFit: "contain",
-                        }}
-                      />
-                      <text>Passport Image</text>
-                    </li>
-                    <li key={4} style={liStyle}>
-                      <Image
-                        src={
-                          userEdit.User_Signed_Contract !== ""
-                            ? userEdit.User_Signed_Contract
-                            : "/assets/images/placeholder.jpg"
-                        }
-                        alt="signed contract"
-                        style={{
-                          position: "absolute",
-                          top: "10%",
-                          left: "10%",
-                          right: 0,
-                          bottom: 0,
-                          height: "80%",
-                          width: "80%",
-                          objectFit: "contain",
-                        }}
-                      />
-                      <text>KRA Pin</text>
-                    </li>
-                  </ul>
-                </ImageGroup>
-              </Box>
               <Box
                 width={"90%"}
                 mt="20px"
@@ -300,28 +223,36 @@ const UserItem = () => {
                   variant="contained"
                   sx={{
                     background: colors.greenAccent[500],
-                    marginRight: '20px',
+                    marginRight: "20px",
                     "&:hover": {
                       background: colors.greenAccent[300],
                     },
                   }}
-                  onClick={() => verifyUser('organic')}
+                  onClick={() => verifyUser("organic")}
                 >
-                  {verifying ? <ButtonLoadingPlaceholder /> : "Verify User as Organic Farmer"}
+                  {verifying ? (
+                    <ButtonLoadingPlaceholder />
+                  ) : (
+                    "Verify User as Organic Farmer"
+                  )}
                 </Button>
                 <Button
                   disabled={verifying}
                   variant="contained"
                   sx={{
                     background: colors.greenAccent[500],
-                    marginRight: '20px',
+                    marginRight: "20px",
                     "&:hover": {
                       background: colors.greenAccent[300],
                     },
                   }}
-                  onClick={() => verifyUser('thorium')}
+                  onClick={() => verifyUser("thorium")}
                 >
-                  {verifying ? <ButtonLoadingPlaceholder /> : "Verify User As Thorium Farmer"}
+                  {verifying ? (
+                    <ButtonLoadingPlaceholder />
+                  ) : (
+                    "Verify User As Thorium Farmer"
+                  )}
                 </Button>
                 <Button
                   disabled={verifying}
@@ -332,7 +263,7 @@ const UserItem = () => {
                       background: colors.greenAccent[300],
                     },
                   }}
-                  onClick={() => verifyUser('verify')}
+                  onClick={() => verifyUser("verify")}
                 >
                   {verifying ? <ButtonLoadingPlaceholder /> : "Verify User"}
                 </Button>
