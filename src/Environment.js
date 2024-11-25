@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 export const Environment = {
   // BaseURL: "https://api.thoriumorganicfoods.com",
-  BaseURL: "http://localhost:5001",
+  BaseURL: "https://printing-api.onrender.com",
 };
 
 export const Headers = () => {
